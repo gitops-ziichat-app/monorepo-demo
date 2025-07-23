@@ -1,0 +1,23 @@
+{
+  "name": "@gitops-ziichat-app/config",
+  "version": "0.0.0",
+  "description": "Shared configuration files for monorepo",
+  "main": "index.js",
+  "files": [
+    "eslint.js",
+    "prettier.js",
+    "tsconfig.json"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}
+

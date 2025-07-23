@@ -1,0 +1,26 @@
+{
+  "name": "@gitops-ziichat-app/api",
+  "version": "0.0.0",
+  "description": "Hono API server",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@gitops-ziichat-app/utils": "workspace:*",
+    "hono": "^4.0.0"
+  },
+  "devDependencies": {
+    "@gitops-ziichat-app/config": "workspace:*",
+    "@types/node": "^20.11.17",
+    "tsup": "^8.0.2",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3"
+  }
+}
+
