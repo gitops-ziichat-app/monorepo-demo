@@ -31,7 +31,7 @@ app.get('/api/v1', (c) => {
     ]
   });
 });
-app.get('/api/v2/api-test', (c) => {
+app.get('/api/v2/api', (c) => {
   return c.json({
     message: 'Welcome to Monorepo Demo API',
     timestamp: formatDate(new Date()),
