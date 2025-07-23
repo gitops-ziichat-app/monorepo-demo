@@ -1,10 +1,7 @@
 import { getPackages } from '@manypkg/get-packages';
-import { read as readConfig } from '@changesets/config';
 import writeChangeset from '@changesets/write';
 import readChangeset from '@changesets/read';
-import { getDependentsGraph } from '@changesets/get-dependents-graph';
 import path from 'path';
-import fs from 'fs/promises';
 import simpleGit from 'simple-git';
 
 const cwd = process.cwd();
@@ -13,7 +10,6 @@ const git = simpleGit(cwd);
 async function autogenerateChangeset() {
   const { packages, root } = await getPackages(cwd);
   const allPackages = root ? packages.concat(root) : packages;
-  const dependentsGraph = await getDependentsGraph(allPackages);
 
   const diffSummary = await git.diffSummary();
   const changedFiles = diffSummary.files.map(f => f.file);
@@ -23,17 +19,14 @@ async function autogenerateChangeset() {
     return;
   }
 
+  const packageDirs = allPackages.map(p => ({ pkg: p, relDir: path.relative(cwd, p.dir) }));
+  const sortedPackageDirs = packageDirs.slice().sort((a, b) => b.relDir.length - a.relDir.length);
+
   const changedPackageNames = new Set();
   for (const file of changedFiles) {
-    const pkg = packages.find(p => file.startsWith(path.relative(cwd, p.dir)));
-    if (pkg) {
-      changedPackageNames.add(pkg.packageJson.name);
-      // Add dependents of the changed package
-      for (const [dependent, dependencies] of dependentsGraph.entries()) {
-        if (dependencies.has(pkg.packageJson.name)) {
-          changedPackageNames.add(dependent);
-        }
-      }
+    const pkgEntry = sortedPackageDirs.find(p => file.startsWith(p.relDir));
+    if (pkgEntry) {
+      changedPackageNames.add(pkgEntry.pkg.packageJson.name);
     }
   }
 
@@ -64,7 +57,3 @@ async function autogenerateChangeset() {
 }
 
 autogenerateChangeset();
-
-
-
-
