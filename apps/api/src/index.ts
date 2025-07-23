@@ -31,7 +31,18 @@ app.get('/api/v1', (c) => {
     ]
   });
 });
-
+app.get('/api/v2/test', (c) => {
+  return c.json({
+    message: 'Welcome to Monorepo Demo API',
+    timestamp: formatDate(new Date()),
+    endpoints: [
+      'GET /health - Health check',
+      'GET /utils/id - Generate random ID',
+      'POST /utils/capitalize - Capitalize text',
+      'POST /utils/validate - Check if value is empty'
+    ]
+  });
+});
 // Utility endpoints
 app.get('/utils/id', (c) => {
   return c.json({
