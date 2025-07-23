@@ -2,7 +2,7 @@
   "name": "@gitops-ziichat-app/eslint-config",
   "version": "0.0.0",
   "description": "Shared configuration files for monorepo",
-  "main": "index.js",
+  "main": "eslint.js",
   "files": [
     "eslint.js",
     "prettier.js",
