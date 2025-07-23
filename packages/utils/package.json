@@ -1,6 +1,6 @@
 {
   "name": "@gitops-ziichat-app/utils",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Shared utility functions",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -30,4 +30,3 @@
     "registry": "https://npm.pkg.github.com"
   }
 }
-
