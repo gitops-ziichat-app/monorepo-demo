@@ -1,5 +1,13 @@
 # @gitops-ziichat-app/api
 
+## 0.3.0
+
+### Minor Changes
+
+- e679706: add new api
+  - Update feat manager api
+  - Test abcs
+
 ## 0.1.2
 
 ### Patch Changes
