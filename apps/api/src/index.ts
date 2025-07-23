@@ -4,7 +4,6 @@ import { logger } from 'hono/logger';
 import { formatDate, generateId, capitalize, isEmpty } from '@gitops-ziichat-app/utils';
 
 const app = new Hono();
-
 // Middleware
 app.use('*', cors());
 app.use('*', logger());
@@ -85,7 +84,5 @@ export default {
 };
 
 // Start server if this file is run directly
-if (import.meta.main) {
-  console.log(`🚀 Server is running on http://0.0.0.0:${port}`);
-}
+console.log(`🚀 Server is running on http://0.0.0.0:${port}`);
 
