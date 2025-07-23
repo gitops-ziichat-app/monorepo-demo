@@ -19,7 +19,7 @@ app.get('/health', (c) => {
 });
 
 // Root endpoint
-app.get('/api/v1', (c) => {
+app.get('/api/v1/metris', (c) => {
   return c.json({
     message: 'Welcome to Monorepo Demo API',
     timestamp: formatDate(new Date()),
