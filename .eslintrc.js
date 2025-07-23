@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ['@gitops-ziichat-app/config/eslint'],
+  extends: ['@gitops-ziichat-app/eslint-config'],
   ignorePatterns: ['apps/**', 'packages/**'],
 };
 
