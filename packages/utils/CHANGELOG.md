@@ -1,4 +1,4 @@
-# @gitops-ziichat-app/api
+# @gitops-ziichat-app/utils
 
 ## 0.1.0
 
@@ -11,8 +11,3 @@
   - Hono-based API server
   - Complete CI/CD pipeline with GitHub Actions
   - Automated versioning and publishing with Changesets
-
-### Patch Changes
-
-- Updated dependencies [d563ed1]
-  - @gitops-ziichat-app/utils@0.1.0
