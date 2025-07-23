@@ -16,7 +16,7 @@
     "hono": "^4.0.0"
   },
   "devDependencies": {
-    "@gitops-ziichat-app/config": "workspace:*",
+    "@gitops-ziichat-app/eslint-config": "workspace:*",
     "@types/node": "^20.11.17",
     "tsup": "^8.0.2",
     "tsx": "^4.7.1",

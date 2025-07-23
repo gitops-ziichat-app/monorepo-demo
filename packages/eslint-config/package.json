@@ -1,14 +1,14 @@
 {
-  "name": "@gitops-ziichat-app/config",
+  "name": "@gitops-ziichat-app/eslint-config",
   "version": "0.0.0",
   "description": "Shared configuration files for monorepo",
-  "main": "index.js",
+  "main": "eslint.js",
   "files": [
     "eslint.js",
     "prettier.js",
     "tsconfig.json"
   ],
-  "devDependencies": {
+  "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.56.0",

@@ -1,5 +1,4 @@
 {
-  "extends": "@gitops-ziichat-app/config/tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",

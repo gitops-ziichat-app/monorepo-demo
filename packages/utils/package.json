@@ -22,7 +22,7 @@
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "@gitops-ziichat-app/config": "workspace:*",
+    "@gitops-ziichat-app/eslint-config": "workspace:*",
     "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   },
