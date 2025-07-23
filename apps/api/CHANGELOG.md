@@ -1,5 +1,13 @@
 # @gitops-ziichat-app/api
 
+## 0.1.2
+
+### Patch Changes
+
+- acbcedd: update endpoint
+- This is the first release of our monorepo demo project featuring:
+  - Update endpoint api to api/v1 => api/v2
+
 ## 0.1.0
 
 ### Minor Changes
