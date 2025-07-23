@@ -1,2 +1,2 @@
-module.exports = require('@gitops-ziichat-app/eslint-config/prettier.js');
+module.exports = require('./packages/eslint-config/prettier.js');
 
