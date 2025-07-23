@@ -9,21 +9,32 @@ const git = simpleGit(cwd);
 
 async function autogenerateChangeset() {
   console.log('[DEBUG] Starting autogenerateChangeset in directory:', cwd);
+  console.log('[DEBUG] Git repository status:', await git.status());
 
   // Step 1: Get packages
   console.log('[DEBUG] Fetching packages...');
-  const { packages, root } = await getPackages(cwd);
+  const { packages, root } = await getPackages(cwd).catch(err => {
+    console.error('[ERROR] Failed to fetch packages:', err);
+    process.exit(1);
+  });
   const allPackages = root ? packages.concat(root) : packages;
-  console.log('[DEBUG] Found packages:', allPackages.map(p => p.packageJson.name));
+  console.log('[DEBUG] Found packages:', allPackages.map(p => ({
+    name: p.packageJson.name,
+    dir: p.dir
+  })));
   if (root) {
-    console.log('[DEBUG] Root package:', root.packageJson.name);
+    console.log('[DEBUG] Root package:', root.packageJson.name, 'at', root.dir);
   } else {
     console.log('[DEBUG] No root package found.');
   }
 
   // Step 2: Get changed files from git diff
   console.log('[DEBUG] Running git diffSummary...');
-  const diffSummary = await git.diffSummary();
+  const diffSummary = await git.diffSummary().catch(err => {
+    console.error('[ERROR] Failed to run git diffSummary:', err);
+    process.exit(1);
+  });
+  console.log('[DEBUG] Git diffSummary raw output:', diffSummary);
   const changedFiles = diffSummary.files.map(f => f.file);
   console.log('[DEBUG] Changed files:', changedFiles);
 
@@ -64,7 +75,10 @@ async function autogenerateChangeset() {
 
   // Step 7: Check for existing changesets
   console.log('[DEBUG] Checking for existing changesets...');
-  const existingChangesets = await readChangeset(cwd);
+  const existingChangesets = await readChangeset(cwd).catch(err => {
+    console.error('[ERROR] Failed to read changesets:', err);
+    process.exit(1);
+  });
   console.log('[DEBUG] Existing changesets:', existingChangesets.map(c => c.id));
   if (existingChangesets.length > 0) {
     console.log('[INFO] Existing changesets found. Skipping autogeneration.');
@@ -73,9 +87,10 @@ async function autogenerateChangeset() {
 
   // Step 8: Create releases
   console.log('[DEBUG] Creating releases for changed packages...');
-  const releases = Array.from(changedPackageNames).map(name => {
-    return { name, type: 'patch' };
-  });
+  const releases = Array.from(changedPackageNames).map(name => ({
+    name,
+    type: 'patch'
+  }));
   console.log('[DEBUG] Releases:', releases);
 
   // Step 9: Write changeset
