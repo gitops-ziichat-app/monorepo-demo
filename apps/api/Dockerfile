@@ -8,7 +8,7 @@ RUN npm install -g pnpm@8
 FROM base AS pruner
 WORKDIR /app
 COPY . .
-RUN npx turbo prune @monorepo-demo/api --docker
+RUN npx turbo prune @gitops-ziichat-app/api --docker
 
 # Install dependencies
 FROM base AS installer
