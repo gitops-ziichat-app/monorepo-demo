@@ -7,7 +7,7 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@gitops-ziichat-app/config"],
+  "ignore": ["@gitops-ziichat-app/eslint-config"],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true
   }
